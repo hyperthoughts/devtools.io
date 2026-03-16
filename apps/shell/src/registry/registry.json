@@ -1,0 +1,34 @@
+{
+  "tools": [
+    {
+      "id": "base64-codec",
+      "name": "Base64 Codec",
+      "description": "Encode and decode Base64 strings with URL-safe variant support",
+      "icon": "binary",
+      "category": "encoders",
+      "tags": ["base64", "encode", "decode", "binary"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "hash-generator",
+      "name": "Hash Generator",
+      "description": "Generate SHA-256, SHA-1, and MD5 hashes from text or files",
+      "icon": "fingerprint",
+      "category": "crypto",
+      "tags": ["hash", "sha256", "sha1", "md5", "checksum"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "description": "Format, validate, and minify JSON with syntax highlighting",
+      "icon": "braces",
+      "category": "formatters",
+      "tags": ["json", "format", "validate", "minify", "pretty-print"],
+      "version": "0.1.0",
+      "source": "builtin"
+    }
+  ]
+}

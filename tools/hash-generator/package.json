@@ -1,0 +1,36 @@
+{
+  "name": "@devtools/hash-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Hash Generator",
+    "description": "Generate SHA-256, SHA-1, and MD5 hashes from text or files",
+    "icon": "fingerprint",
+    "category": "crypto",
+    "tags": [
+      "hash",
+      "sha256",
+      "sha1",
+      "md5",
+      "checksum"
+    ]
+  }
+}

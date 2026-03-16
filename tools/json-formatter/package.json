@@ -1,0 +1,36 @@
+{
+  "name": "@devtools/json-formatter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "JSON Formatter",
+    "description": "Format, validate, and minify JSON with syntax highlighting",
+    "icon": "braces",
+    "category": "formatters",
+    "tags": [
+      "json",
+      "format",
+      "validate",
+      "minify",
+      "pretty-print"
+    ]
+  }
+}

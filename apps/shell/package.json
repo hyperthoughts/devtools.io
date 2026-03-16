@@ -1,0 +1,37 @@
+{
+  "name": "@devtools/shell",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview"
+  },
+  "dependencies": {
+    "@devtools/base64-codec": "workspace:*",
+    "@devtools/core": "workspace:*",
+    "@devtools/filesystem": "workspace:*",
+    "@devtools/hash-generator": "workspace:*",
+    "@devtools/json-formatter": "workspace:*",
+    "@devtools/storage": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "@devtools/workers": "workspace:*",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-router": "^7"
+  },
+  "devDependencies": {
+    "@rolldown/plugin-babel": "^0.2",
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6",
+    "babel-plugin-react-compiler": "^1",
+    "tailwindcss": "^4",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-pwa": "^1",
+    "vite-plus": "catalog:"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@devtools/base64-codec",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Base64 Codec",
+    "description": "Encode and decode Base64 strings with URL-safe variant support",
+    "icon": "binary",
+    "category": "encoders",
+    "tags": [
+      "base64",
+      "encode",
+      "decode",
+      "binary"
+    ]
+  }
+}

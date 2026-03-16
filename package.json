@@ -1,0 +1,21 @@
+{
+  "name": "devtools.io",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "ready": "vp fmt && vp lint && vp run test -r && vp run build -r",
+    "dev": "vp run shell#dev",
+    "prepare": "vp config",
+    "generate-registry": "vp exec tsx scripts/generate-registry.ts",
+    "create-tool": "vp exec tsx scripts/create-tool.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "pnpm@10.32.1"
+}
