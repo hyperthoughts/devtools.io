@@ -17,6 +17,8 @@
     "@devtools/storage": "workspace:*",
     "@devtools/ui": "workspace:*",
     "@devtools/workers": "workspace:*",
+    "framer-motion": "catalog:",
+    "fuse.js": "catalog:",
     "react": "^19",
     "react-dom": "^19",
     "react-router": "^7"

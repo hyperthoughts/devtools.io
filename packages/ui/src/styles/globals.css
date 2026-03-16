@@ -67,6 +67,68 @@
   }
 }
 
+/* Accent color overrides — applied via data-accent on <html> */
+[data-accent='blue'] {
+  --color-primary: hsl(217 91% 60%);
+  --color-ring: hsl(217 91% 60%);
+}
+[data-accent='pink'] {
+  --color-primary: hsl(330 81% 60%);
+  --color-ring: hsl(330 81% 60%);
+}
+[data-accent='orange'] {
+  --color-primary: hsl(25 95% 53%);
+  --color-ring: hsl(25 95% 53%);
+}
+[data-accent='yellow'] {
+  --color-primary: hsl(45 93% 47%);
+  --color-ring: hsl(45 93% 47%);
+}
+[data-accent='green'] {
+  --color-primary: hsl(142 71% 45%);
+  --color-ring: hsl(142 71% 45%);
+}
+[data-accent='indigo'] {
+  --color-primary: hsl(239 84% 67%);
+  --color-ring: hsl(239 84% 67%);
+}
+[data-accent='purple'] {
+  --color-primary: hsl(270 70% 60%);
+  --color-ring: hsl(270 70% 60%);
+}
+
+/* All accent colors keep white foreground for contrast */
+[data-accent]:not([data-accent='none']) {
+  --color-primary-foreground: hsl(0 0% 100%);
+}
+
+/* Background shade overrides — applied via data-shade on <html> */
+.dark[data-shade='zinc'] {
+  --color-background: hsl(240 6% 10%);
+  --color-card: hsl(240 6% 10%);
+  --color-popover: hsl(240 6% 10%);
+}
+.dark[data-shade='slate'] {
+  --color-background: hsl(222 47% 11%);
+  --color-card: hsl(222 47% 11%);
+  --color-popover: hsl(222 47% 11%);
+}
+.dark[data-shade='stone'] {
+  --color-background: hsl(20 14% 10%);
+  --color-card: hsl(20 14% 10%);
+  --color-popover: hsl(20 14% 10%);
+}
+.dark[data-shade='gray'] {
+  --color-background: hsl(220 9% 12%);
+  --color-card: hsl(220 9% 12%);
+  --color-popover: hsl(220 9% 12%);
+}
+.dark[data-shade='neutral'] {
+  --color-background: hsl(0 0% 9%);
+  --color-card: hsl(0 0% 9%);
+  --color-popover: hsl(0 0% 9%);
+}
+
 @layer base {
   * {
     @apply border-border;

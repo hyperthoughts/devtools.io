@@ -1,14 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router';
-import { ThemeProvider } from './providers/theme-provider.tsx';
-import { StorageProvider } from './providers/storage-provider.tsx';
-import { WorkerProvider } from './providers/worker-provider.tsx';
-import { FilesystemProvider } from './providers/filesystem-provider.tsx';
-import { ShellLayout } from './layout/shell-layout.tsx';
-import { Home } from './routes/home.tsx';
-import { ToolRoute } from './routes/tool-route.tsx';
-import { Settings } from './routes/settings.tsx';
+import { BrowserRouter } from 'react-router';
+import { ThemeProvider } from './contexts/theme-context.tsx';
+import { SettingsProvider } from './contexts/settings-context.tsx';
+import { SearchProvider } from './contexts/search-context.tsx';
+import { StorageProvider } from './contexts/storage-context.tsx';
+import { WorkerProvider } from './contexts/worker-context.tsx';
+import { FilesystemProvider } from './contexts/filesystem-context.tsx';
+import { AppRoutes } from './routes/index.ts';
 import registryData from './registry/registry.json';
-import type { ToolEntry } from './types.ts';
+import type { ToolEntry } from './types/index.ts';
 
 const tools = (registryData.tools ?? []) as ToolEntry[];
 
@@ -19,13 +18,11 @@ export function App() {
         <WorkerProvider>
           <FilesystemProvider>
             <BrowserRouter>
-              <Routes>
-                <Route element={<ShellLayout tools={tools} />}>
-                  <Route index element={<Home tools={tools} />} />
-                  <Route path="tools/:toolId" element={<ToolRoute />} />
-                  <Route path="settings" element={<Settings />} />
-                </Route>
-              </Routes>
+              <SettingsProvider>
+                <SearchProvider>
+                  <AppRoutes tools={tools} />
+                </SearchProvider>
+              </SettingsProvider>
             </BrowserRouter>
           </FilesystemProvider>
         </WorkerProvider>

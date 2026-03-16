@@ -11,6 +11,9 @@
     "create-tool": "vp exec tsx scripts/create-tool.ts"
   },
   "devDependencies": {
+    "@commitlint/cli": "catalog:",
+    "@commitlint/config-conventional": "catalog:",
+    "@commitlint/types": "catalog:",
     "tsx": "^4",
     "vite-plus": "catalog:"
   },
