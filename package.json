@@ -7,8 +7,7 @@
     "ready": "vp fmt && vp lint && vp run test -r && vp run build -r",
     "dev": "vp run shell#dev",
     "prepare": "vp config",
-    "generate-registry": "vp exec tsx scripts/generate-registry.ts",
-    "create-tool": "vp exec tsx scripts/create-tool.ts"
+    "analyze": "vp run shell#analyze"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",

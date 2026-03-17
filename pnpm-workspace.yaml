@@ -20,6 +20,7 @@ catalog:
   fuse.js: ^7.1.0
   typescript: ^5
   vite: npm:@voidzero-dev/vite-plus-core@latest
+  vite-bundle-visualizer: ^1.2.1
   vite-plus: latest
   vitest: npm:@voidzero-dev/vite-plus-test@latest
 
