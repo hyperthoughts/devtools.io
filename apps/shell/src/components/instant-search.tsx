@@ -2,20 +2,17 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import { useToolRegistry } from '@devtools/storage';
 import { useDebounce } from '../hooks/use-debounce.ts';
 import { useKeyboardShortcuts } from '../hooks/use-keyboard-shortcuts.ts';
 import { filterTools } from '../utils/search.ts';
 import { toolDetailPath } from '../constants/routes.ts';
-import type { ToolEntry } from '../types/index.ts';
 
 const ITEM_HEIGHT = 48;
 const LIST_MAX_HEIGHT = 300;
 
-interface InstantSearchProps {
-  tools: ToolEntry[];
-}
-
-export function InstantSearch({ tools }: InstantSearchProps) {
+export function InstantSearch() {
+  const tools = useToolRegistry();
   const [open, setOpen] = useState(false);
   const [localQuery, setLocalQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);

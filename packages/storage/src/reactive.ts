@@ -1,5 +1,6 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from './database.ts';
+import type { ToolRegistryEntry } from './types.ts';
 
 export function useAppMeta<T>(key: string, fallback: T): T {
   const record = useLiveQuery(() => db.appMeta.get(key), [key]);
@@ -34,4 +35,12 @@ export function useScopedLiveAll(toolId: string): Array<{ key: string; value: un
       [toolId],
     ) ?? []
   );
+}
+
+export function useToolRegistry(): ToolRegistryEntry[] {
+  return useLiveQuery(() => db.toolRegistry.toArray(), []) ?? [];
+}
+
+export async function loadRegistry(tools: ToolRegistryEntry[]): Promise<void> {
+  await db.toolRegistry.bulkPut(tools);
 }

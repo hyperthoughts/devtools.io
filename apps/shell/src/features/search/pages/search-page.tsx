@@ -2,14 +2,9 @@ import { PageTransition } from '../../../components/page-transition.tsx';
 import { SearchHeader } from '../components/search-header.tsx';
 import { SearchResults } from '../components/search-results.tsx';
 import { useSearchTools } from '../hooks/use-search.ts';
-import type { ToolEntry } from '../../../types/index.ts';
 
-interface SearchPageProps {
-  tools: ToolEntry[];
-}
-
-export function SearchPage({ tools }: SearchPageProps) {
-  const { results, sort, setSort, view, setView, totalCount } = useSearchTools(tools);
+export function SearchPage() {
+  const { results, sort, setSort, view, setView, totalCount } = useSearchTools();
 
   return (
     <PageTransition>

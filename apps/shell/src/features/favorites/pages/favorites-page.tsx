@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@devtools/ui';
+import { useToolRegistry } from '@devtools/storage';
 import { PageTransition } from '../../../components/page-transition.tsx';
 import { SearchResults } from '../../search/components/search-results.tsx';
 import { SortToggle } from '../../../components/sort-toggle.tsx';
@@ -10,11 +11,8 @@ import type { ToolEntry } from '../../../types/index.ts';
 
 type GroupBy = 'none' | 'category';
 
-interface FavoritesPageProps {
-  tools: ToolEntry[];
-}
-
-export function FavoritesPage({ tools }: FavoritesPageProps) {
+export function FavoritesPage() {
+  const tools = useToolRegistry();
   const { favorites } = useFavorites();
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<SortOption>('name');
@@ -36,11 +34,9 @@ export function FavoritesPage({ tools }: FavoritesPageProps) {
     if (groupBy !== 'category') return null;
     const map = new Map<string, ToolEntry[]>();
     for (const tool of filtered) {
-      const list = map.get(tool.category) ?? [];
-      list.push(tool);
-      map.set(tool.category, list);
+      map.set(tool.category, [...(map.get(tool.category) ?? []), tool]);
     }
-    return [...map.entries()].sort(([a], [b]) => a.localeCompare(b));
+    return [...map.entries()].toSorted(([a], [b]) => a.localeCompare(b));
   }, [filtered, groupBy]);
 
   return (

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@devtools/ui';
+import { useToolRegistry } from '@devtools/storage';
 import { PageTransition } from '../../../components/page-transition.tsx';
 import { VirtualizedToolList } from '../../../components/virtualized-tool-list.tsx';
 import { SortToggle } from '../../../components/sort-toggle.tsx';
@@ -9,11 +10,8 @@ import type { ToolEntry } from '../../../types/index.ts';
 
 type GroupBy = 'none' | 'category';
 
-interface ExplorePageProps {
-  tools: ToolEntry[];
-}
-
-export function ExplorePage({ tools }: ExplorePageProps) {
+export function ExplorePage() {
+  const tools = useToolRegistry();
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<SortOption>('name');
   const [view, setView] = useState<'list' | 'grid'>('list');
@@ -29,11 +27,9 @@ export function ExplorePage({ tools }: ExplorePageProps) {
     if (groupBy !== 'category') return null;
     const map = new Map<string, ToolEntry[]>();
     for (const tool of filtered) {
-      const list = map.get(tool.category) ?? [];
-      list.push(tool);
-      map.set(tool.category, list);
+      map.set(tool.category, [...(map.get(tool.category) ?? []), tool]);
     }
-    return [...map.entries()].sort(([a], [b]) => a.localeCompare(b));
+    return [...map.entries()].toSorted(([a], [b]) => a.localeCompare(b));
   }, [filtered, groupBy]);
 
   return (

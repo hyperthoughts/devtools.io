@@ -30,13 +30,12 @@ export type SortOption = 'relevance' | 'name' | 'category';
 
 export function sortTools(tools: ToolEntry[], sort: SortOption): ToolEntry[] {
   if (sort === 'relevance') return tools;
-  const sorted = [...tools];
   switch (sort) {
     case 'name':
-      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+      return tools.toSorted((a, b) => a.name.localeCompare(b.name));
     case 'category':
-      return sorted.sort((a, b) => a.category.localeCompare(b.category));
+      return tools.toSorted((a, b) => a.category.localeCompare(b.category));
     default:
-      return sorted;
+      return tools;
   }
 }

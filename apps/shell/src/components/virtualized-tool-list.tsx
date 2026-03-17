@@ -75,11 +75,9 @@ function VirtualizedToolListInner({
 
   const rows = useMemo(() => {
     if (view === 'list') return items.map((item) => [item]);
-    const paired: ToolEntry[][] = [];
-    for (let i = 0; i < items.length; i += GRID_COLS) {
-      paired.push(items.slice(i, i + GRID_COLS));
-    }
-    return paired;
+    return Array.from({ length: Math.ceil(items.length / GRID_COLS) }, (_, i) =>
+      items.slice(i * GRID_COLS, (i + 1) * GRID_COLS),
+    );
   }, [items, view]);
 
   const gap = view === 'grid' ? GRID_GAP : LIST_GAP;

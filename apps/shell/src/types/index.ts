@@ -1,15 +1,6 @@
-import type { ToolCategory } from '@devtools/core';
+import type { ToolRegistryEntry } from '@devtools/storage';
 
-export interface ToolEntry {
-  id: string;
-  name: string;
-  description: string;
-  icon: string;
-  category: ToolCategory;
-  tags: string[];
-  version: string;
-  source: string;
-}
+export type ToolEntry = ToolRegistryEntry;
 
 export interface FavoriteEntry {
   id: string;
