@@ -1,12 +1,15 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@devtools/ui';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { useDebounce } from '../hooks/use-debounce.ts';
 import { useKeyboardShortcuts } from '../hooks/use-keyboard-shortcuts.ts';
 import { filterTools } from '../utils/search.ts';
 import { toolDetailPath } from '../constants/routes.ts';
 import type { ToolEntry } from '../types/index.ts';
+
+const ITEM_HEIGHT = 48;
+const LIST_MAX_HEIGHT = 300;
 
 interface InstantSearchProps {
   tools: ToolEntry[];
@@ -16,10 +19,18 @@ export function InstantSearch({ tools }: InstantSearchProps) {
   const [open, setOpen] = useState(false);
   const [localQuery, setLocalQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
   const navigate = useNavigate();
   const debouncedQuery = useDebounce(localQuery, 150);
 
   const filtered = filterTools(tools, debouncedQuery);
+
+  const virtualizer = useVirtualizer({
+    count: filtered.length,
+    getScrollElement: () => listRef.current,
+    estimateSize: () => ITEM_HEIGHT,
+    overscan: 8,
+  });
 
   const openSearch = useCallback(() => {
     setOpen(true);
@@ -110,32 +121,41 @@ export function InstantSearch({ tools }: InstantSearchProps) {
                 </button>
               )}
             </div>
-            <ul className="max-h-[300px] overflow-y-auto p-2">
-              {filtered.map((tool, i) => (
-                <motion.li
-                  key={tool.id}
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.03 }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => selectTool(tool.id)}
-                    className={cn(
-                      'flex w-full flex-col rounded-md px-3 py-2 text-left transition-colors hover:bg-accent',
-                    )}
-                  >
-                    <span className="text-sm font-medium">{tool.name}</span>
-                    <span className="text-xs text-muted-foreground">{tool.description}</span>
-                  </button>
-                </motion.li>
-              ))}
-              {debouncedQuery && filtered.length === 0 && (
+            <ul
+              ref={listRef}
+              className="overflow-y-auto p-2"
+              style={{ maxHeight: LIST_MAX_HEIGHT }}
+            >
+              {filtered.length > 0 ? (
+                <li className="relative w-full" style={{ height: virtualizer.getTotalSize() }}>
+                  {virtualizer.getVirtualItems().map((virtualItem) => {
+                    const tool = filtered[virtualItem.index];
+                    return (
+                      <div
+                        key={tool.id}
+                        className="absolute left-0 top-0 w-full"
+                        style={{
+                          height: virtualItem.size,
+                          transform: `translateY(${virtualItem.start}px)`,
+                        }}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => selectTool(tool.id)}
+                          className="flex w-full flex-col rounded-md px-3 py-2 text-left transition-colors hover:bg-accent"
+                        >
+                          <span className="text-sm font-medium">{tool.name}</span>
+                          <span className="text-xs text-muted-foreground">{tool.description}</span>
+                        </button>
+                      </div>
+                    );
+                  })}
+                </li>
+              ) : debouncedQuery ? (
                 <li className="px-3 py-6 text-center text-sm text-muted-foreground">
                   No tools found
                 </li>
-              )}
-              {!debouncedQuery && (
+              ) : (
                 <li className="px-3 py-6 text-center text-sm text-muted-foreground">
                   Type to search tools...
                 </li>

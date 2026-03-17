@@ -110,7 +110,7 @@ export function FavoritesPage({ tools }: FavoritesPageProps) {
                     <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       {category}
                     </h2>
-                    <SearchResults results={categoryTools} view={view} />
+                    <SearchResults results={categoryTools} view={view} height="auto" />
                   </section>
                 ))}
                 {grouped.length === 0 && (

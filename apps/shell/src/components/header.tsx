@@ -41,6 +41,17 @@ export function Header() {
 
         <nav className="flex items-center gap-1">
           <NavLink
+            to={ROUTES.EXPLORE}
+            className={({ isActive }) =>
+              cn(
+                'inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:text-foreground',
+                isActive ? 'text-foreground' : 'text-muted-foreground',
+              )
+            }
+          >
+            explore
+          </NavLink>
+          <NavLink
             to={ROUTES.FAVORITES}
             className={({ isActive }) =>
               cn(

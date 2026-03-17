@@ -13,6 +13,7 @@ catalog:
   '@radix-ui/react-separator': ^1.1.8
   '@radix-ui/react-switch': ^1.2.6
   '@tailwindcss/vite': ^4.2.1
+  '@tanstack/react-virtual': ^3.13.23
   '@types/node': ^24
   dexie-react-hooks: ^4.2.0
   framer-motion: ^12.37.0

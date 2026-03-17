@@ -1,6 +1,7 @@
 export const ROUTES = {
   HOME: '/',
   SEARCH: '/search',
+  EXPLORE: '/explore',
   FAVORITES: '/favorites',
   TOOL_DETAIL: '/tools/:toolId',
   SETTINGS: '/settings',

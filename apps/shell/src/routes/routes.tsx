@@ -2,6 +2,7 @@ import type { RouteObject } from 'react-router';
 import { MainLayout } from '../layouts/main-layout.tsx';
 import { homeRoutes } from '../features/home/routes.tsx';
 import { createSearchRoutes } from '../features/search/routes.tsx';
+import { createExploreRoutes } from '../features/explore/routes.tsx';
 import { createFavoritesRoutes } from '../features/favorites/routes.tsx';
 import { toolDetailRoutes } from '../features/tool-detail/routes.tsx';
 import { settingsRoutes } from '../features/settings/routes.tsx';
@@ -15,6 +16,7 @@ export function createMainRoutes(tools: ToolEntry[]): RouteObject[] {
       children: [
         ...homeRoutes,
         ...createSearchRoutes(tools),
+        ...createExploreRoutes(tools),
         ...createFavoritesRoutes(tools),
         ...toolDetailRoutes,
         ...settingsRoutes,

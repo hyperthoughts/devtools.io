@@ -17,6 +17,7 @@
     "@devtools/storage": "workspace:*",
     "@devtools/ui": "workspace:*",
     "@devtools/workers": "workspace:*",
+    "@tanstack/react-virtual": "catalog:",
     "framer-motion": "catalog:",
     "fuse.js": "catalog:",
     "react": "^19",
