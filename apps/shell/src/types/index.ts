@@ -10,3 +10,10 @@ export interface ToolEntry {
   version: string;
   source: string;
 }
+
+export interface FavoriteEntry {
+  id: string;
+  name: string;
+  category: string;
+  addedAt: number;
+}

@@ -4,9 +4,7 @@ import { ROUTES } from '../constants/routes.ts';
 
 interface SearchContextValue {
   query: string;
-  instantSearchEnabled: boolean;
   setQuery: (q: string) => void;
-  toggleInstantSearch: () => void;
   submitSearch: (q: string) => void;
 }
 
@@ -14,20 +12,7 @@ const SearchContext = createContext<SearchContextValue | null>(null);
 
 export function SearchProvider({ children }: { children: ReactNode }) {
   const [query, setQuery] = useState('');
-  const [instantSearchEnabled, setInstantSearchEnabled] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    const stored = localStorage.getItem('devtools-instant-search');
-    return stored !== 'false';
-  });
   const navigate = useNavigate();
-
-  const toggleInstantSearch = useCallback(() => {
-    setInstantSearchEnabled((prev) => {
-      const next = !prev;
-      localStorage.setItem('devtools-instant-search', String(next));
-      return next;
-    });
-  }, []);
 
   const submitSearch = useCallback(
     (q: string) => {
@@ -40,9 +25,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <SearchContext.Provider
-      value={{ query, instantSearchEnabled, setQuery, toggleInstantSearch, submitSearch }}
-    >
+    <SearchContext.Provider value={{ query, setQuery, submitSearch }}>
       {children}
     </SearchContext.Provider>
   );

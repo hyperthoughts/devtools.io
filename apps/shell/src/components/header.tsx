@@ -41,7 +41,7 @@ export function Header() {
 
         <nav className="flex items-center gap-1">
           <NavLink
-            to={ROUTES.COMPARE}
+            to={ROUTES.FAVORITES}
             className={({ isActive }) =>
               cn(
                 'inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:text-foreground',
@@ -49,12 +49,8 @@ export function Header() {
               )
             }
           >
-            compare
-            <kbd className="ml-0.5 rounded border bg-muted px-1 py-0.5 font-mono text-[10px] text-muted-foreground">
-              c
-            </kbd>
+            favorites
           </NavLink>
-
           <NavLink
             to={ROUTES.SETTINGS}
             className={({ isActive }) =>
@@ -65,9 +61,6 @@ export function Header() {
             }
           >
             settings
-            <kbd className="ml-0.5 rounded border bg-muted px-1 py-0.5 font-mono text-[10px] text-muted-foreground">
-              ,
-            </kbd>
           </NavLink>
 
           <DropdownMenu>

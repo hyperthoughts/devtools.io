@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite-plus';
+import tailwindcss from '@tailwindcss/vite';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import babel from '@rolldown/plugin-babel';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     react(),
     babel({ presets: [reactCompilerPreset()] } as Parameters<typeof babel>[0]),
     VitePWA({

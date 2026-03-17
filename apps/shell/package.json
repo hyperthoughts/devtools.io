@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@rolldown/plugin-babel": "^0.2",
+    "@tailwindcss/vite": "catalog:",
     "@testing-library/react": "^16",
     "@types/react": "^19",
     "@types/react-dom": "^19",

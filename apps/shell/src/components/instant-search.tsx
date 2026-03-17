@@ -2,7 +2,6 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@devtools/ui';
-import { useSearch } from '../contexts/search-context.tsx';
 import { useDebounce } from '../hooks/use-debounce.ts';
 import { useKeyboardShortcuts } from '../hooks/use-keyboard-shortcuts.ts';
 import { filterTools } from '../utils/search.ts';
@@ -18,10 +17,9 @@ export function InstantSearch({ tools }: InstantSearchProps) {
   const [localQuery, setLocalQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
-  const { instantSearchEnabled } = useSearch();
   const debouncedQuery = useDebounce(localQuery, 150);
 
-  const filtered = instantSearchEnabled ? filterTools(tools, debouncedQuery) : [];
+  const filtered = filterTools(tools, debouncedQuery);
 
   const openSearch = useCallback(() => {
     setOpen(true);

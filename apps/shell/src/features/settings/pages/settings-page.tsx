@@ -1,7 +1,6 @@
 import { Link } from 'react-router';
 import { PageTransition } from '../../../components/page-transition.tsx';
 import { AppearanceSection } from '../components/appearance-section.tsx';
-import { DisplaySection } from '../components/display-section.tsx';
 
 export function SettingsPage() {
   return (
@@ -24,7 +23,6 @@ export function SettingsPage() {
 
         <div className="space-y-8">
           <AppearanceSection />
-          <DisplaySection />
         </div>
       </div>
     </PageTransition>

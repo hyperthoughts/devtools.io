@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { motion } from 'framer-motion';
 import { cn } from '@devtools/ui';
 import { TagBadge } from '../../../components/tag-badge.tsx';
+import { FavoriteButton } from '../../../components/favorite-button.tsx';
 import { toolDetailPath } from '../../../constants/routes.ts';
 import type { ToolEntry } from '../../../types/index.ts';
 
@@ -30,7 +31,10 @@ export function SearchResultCard({ tool, index, view }: SearchResultCardProps) {
             <h3 className="text-sm font-semibold text-foreground">{tool.name}</h3>
             <p className="mt-1 text-sm text-muted-foreground">{tool.description}</p>
           </div>
-          <span className="shrink-0 text-xs text-muted-foreground">v{tool.version}</span>
+          <div className="flex shrink-0 items-center gap-1">
+            <FavoriteButton tool={tool} />
+            <span className="text-xs text-muted-foreground">v{tool.version}</span>
+          </div>
         </div>
         <div className="mt-3 flex flex-wrap gap-1.5">
           {tool.tags.map((tag) => (

@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router';
 import { ThemeProvider } from './contexts/theme-context.tsx';
-import { SettingsProvider } from './contexts/settings-context.tsx';
 import { SearchProvider } from './contexts/search-context.tsx';
+import { FavoritesProvider } from './contexts/favorites-context.tsx';
 import { StorageProvider } from './contexts/storage-context.tsx';
 import { WorkerProvider } from './contexts/worker-context.tsx';
 import { FilesystemProvider } from './contexts/filesystem-context.tsx';
@@ -18,11 +18,11 @@ export function App() {
         <WorkerProvider>
           <FilesystemProvider>
             <BrowserRouter>
-              <SettingsProvider>
-                <SearchProvider>
+              <SearchProvider>
+                <FavoritesProvider>
                   <AppRoutes tools={tools} />
-                </SearchProvider>
-              </SettingsProvider>
+                </FavoritesProvider>
+              </SearchProvider>
             </BrowserRouter>
           </FilesystemProvider>
         </WorkerProvider>

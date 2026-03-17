@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { db } from '@devtools/storage';
 
 export type Theme = 'dark' | 'light' | 'system';
 export type AccentColor =
@@ -24,10 +25,16 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-const STORAGE_KEYS = {
+const LS_KEYS = {
   theme: 'devtools-theme',
   accent: 'devtools-accent',
   shade: 'devtools-shade',
+} as const;
+
+const DB_KEYS = {
+  theme: 'theme',
+  accent: 'accentColor',
+  shade: 'backgroundShade',
 } as const;
 
 function getSystemTheme(): 'dark' | 'light' {
@@ -40,24 +47,57 @@ function readStorage<T extends string>(key: string, fallback: T): T {
   return (localStorage.getItem(key) as T) ?? fallback;
 }
 
+function persist<T extends string>(lsKey: string, dbKey: string, value: T) {
+  localStorage.setItem(lsKey, value);
+  void db.appMeta.put({ id: dbKey, value });
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => readStorage(STORAGE_KEYS.theme, 'system'));
+  const [theme, setThemeState] = useState<Theme>(() => readStorage(LS_KEYS.theme, 'system'));
   const [accentColor, setAccentState] = useState<AccentColor>(() =>
-    readStorage(STORAGE_KEYS.accent, 'blue'),
+    readStorage(LS_KEYS.accent, 'blue'),
   );
   const [backgroundShade, setShadeState] = useState<BackgroundShade>(() =>
-    readStorage(STORAGE_KEYS.shade, 'default'),
+    readStorage(LS_KEYS.shade, 'default'),
   );
   const [systemTheme, setSystemTheme] = useState(getSystemTheme);
 
   const resolvedTheme = theme === 'system' ? systemTheme : theme;
 
+  // Hydrate from IndexedDB on mount (canonical source) and reconcile with state
+  useEffect(() => {
+    async function hydrate() {
+      const [dbTheme, dbAccent, dbShade] = await Promise.all([
+        db.appMeta.get(DB_KEYS.theme),
+        db.appMeta.get(DB_KEYS.accent),
+        db.appMeta.get(DB_KEYS.shade),
+      ]);
+
+      if (dbTheme?.value) {
+        const val = dbTheme.value as Theme;
+        setThemeState(val);
+        localStorage.setItem(LS_KEYS.theme, val);
+      }
+      if (dbAccent?.value) {
+        const val = dbAccent.value as AccentColor;
+        setAccentState(val);
+        localStorage.setItem(LS_KEYS.accent, val);
+      }
+      if (dbShade?.value) {
+        const val = dbShade.value as BackgroundShade;
+        setShadeState(val);
+        localStorage.setItem(LS_KEYS.shade, val);
+      }
+    }
+
+    void hydrate();
+  }, []);
+
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(resolvedTheme);
-    localStorage.setItem(STORAGE_KEYS.theme, theme);
-  }, [theme, resolvedTheme]);
+  }, [resolvedTheme]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -66,7 +106,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } else {
       root.setAttribute('data-accent', accentColor);
     }
-    localStorage.setItem(STORAGE_KEYS.accent, accentColor);
   }, [accentColor]);
 
   useEffect(() => {
@@ -76,7 +115,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } else {
       root.setAttribute('data-shade', backgroundShade);
     }
-    localStorage.setItem(STORAGE_KEYS.shade, backgroundShade);
   }, [backgroundShade]);
 
   useEffect(() => {
@@ -86,9 +124,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  const setTheme = (t: Theme) => setThemeState(t);
-  const setAccentColor = (c: AccentColor) => setAccentState(c);
-  const setBackgroundShade = (s: BackgroundShade) => setShadeState(s);
+  const setTheme = (t: Theme) => {
+    setThemeState(t);
+    persist(LS_KEYS.theme, DB_KEYS.theme, t);
+  };
+
+  const setAccentColor = (c: AccentColor) => {
+    setAccentState(c);
+    persist(LS_KEYS.accent, DB_KEYS.accent, c);
+  };
+
+  const setBackgroundShade = (s: BackgroundShade) => {
+    setShadeState(s);
+    persist(LS_KEYS.shade, DB_KEYS.shade, s);
+  };
 
   return (
     <ThemeContext.Provider

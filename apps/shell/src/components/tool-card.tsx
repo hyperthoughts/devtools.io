@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@devtools/ui';
 import { toolDetailPath } from '../constants/routes.ts';
 import { TagBadge } from './tag-badge.tsx';
+import { FavoriteButton } from './favorite-button.tsx';
 import type { ToolEntry } from '../types/index.ts';
 
 interface ToolCardProps {
@@ -24,12 +25,15 @@ export function ToolCard({ tool, className }: ToolCardProps) {
           className,
         )}
       >
-        <div className="flex items-start justify-between">
-          <div>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
             <h3 className="text-sm font-semibold text-foreground">{tool.name}</h3>
             <p className="mt-1 text-sm text-muted-foreground">{tool.description}</p>
           </div>
-          <span className="shrink-0 text-xs text-muted-foreground">v{tool.version}</span>
+          <div className="flex shrink-0 items-center gap-1">
+            <FavoriteButton tool={tool} />
+            <span className="text-xs text-muted-foreground">v{tool.version}</span>
+          </div>
         </div>
         <div className="mt-3 flex flex-wrap gap-1.5">
           {tool.tags.slice(0, 5).map((tag) => (
