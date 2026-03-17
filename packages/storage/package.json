@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "@devtools/core": "workspace:*",
-    "dexie": "^4"
+    "dexie": "^4",
+    "dexie-react-hooks": "catalog:"
   },
   "devDependencies": {
     "@types/react": "^19",

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import type { ToolContext } from '@devtools/core';
 import {
   Card,
@@ -16,24 +16,16 @@ import {
 import { encodeBase64, decodeBase64, type Base64Mode } from './utils.ts';
 
 export function Component({ ctx }: { ctx: ToolContext }) {
-  const [input, setInput] = useState('');
+  const savedInput = ctx.useLive<string>('lastInput');
+  const [input, setInput] = useState(savedInput ?? '');
   const [output, setOutput] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<Base64Mode>('standard');
 
-  useEffect(() => {
-    void ctx.storage.get<string>('lastInput').then((saved) => {
-      if (saved) setInput(saved);
-    });
-  }, [ctx.storage]);
-
-  const saveInput = useCallback(
-    (value: string) => {
-      setInput(value);
-      ctx.storage.set('lastInput', value);
-    },
-    [ctx.storage],
-  );
+  const saveInput = (value: string) => {
+    setInput(value);
+    void ctx.storage.set('lastInput', value);
+  };
 
   const handleEncode = () => {
     const result = encodeBase64(input, mode);

@@ -21,7 +21,9 @@ export interface ToolCapabilities {
 }
 
 export interface ToolContext {
+  toolId: string;
   storage: ToolStorage;
+  useLive: <T>(key: string) => T | undefined;
   worker: ToolWorkerPool | null;
   filesystem: ToolFileSystem | null;
   theme: 'dark' | 'light';

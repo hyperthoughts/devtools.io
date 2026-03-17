@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useParams } from 'react-router';
 import type { ToolDefinition, ToolContext } from '@devtools/core';
+import { useScopedLive } from '@devtools/storage';
 import { useStorageContext } from '../../../contexts/storage-context.tsx';
 import { useWorkerContext } from '../../../contexts/worker-context.tsx';
 import { useFilesystemContext } from '../../../contexts/filesystem-context.tsx';
@@ -69,7 +70,9 @@ export function ToolDetailPage() {
     const fs = tool.capabilities.needsFileSystem ? filesystem : null;
 
     return {
+      toolId,
       storage,
+      useLive: <T,>(key: string) => useScopedLive<T>(toolId, key),
       worker,
       filesystem: fs,
       theme: resolvedTheme,

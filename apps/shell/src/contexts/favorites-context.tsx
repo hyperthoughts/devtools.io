@@ -1,13 +1,5 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react';
-import { db } from '@devtools/storage';
+import { createContext, useCallback, useContext, useMemo, type ReactNode } from 'react';
+import { useAppMeta, setAppMeta } from '@devtools/storage';
 import type { FavoriteEntry, ToolEntry } from '../types/index.ts';
 
 const DB_KEY = 'favorites';
@@ -21,42 +13,28 @@ interface FavoritesContextValue {
 
 const FavoritesContext = createContext<FavoritesContextValue | null>(null);
 
-function persist(entries: FavoriteEntry[]) {
-  void db.appMeta.put({ id: DB_KEY, value: entries });
-}
-
 export function FavoritesProvider({ children }: { children: ReactNode }) {
-  const [favorites, setFavorites] = useState<FavoriteEntry[]>([]);
-
-  useEffect(() => {
-    async function hydrate() {
-      const record = await db.appMeta.get(DB_KEY);
-      if (Array.isArray(record?.value)) {
-        setFavorites(record.value as FavoriteEntry[]);
-      }
-    }
-    void hydrate();
-  }, []);
+  const favorites = useAppMeta<FavoriteEntry[]>(DB_KEY, []);
 
   const favoriteIds = useMemo(() => new Set(favorites.map((f) => f.id)), [favorites]);
 
   const isFavorite = useCallback((toolId: string) => favoriteIds.has(toolId), [favoriteIds]);
 
-  const toggleFavorite = useCallback((tool: ToolEntry) => {
-    setFavorites((prev) => {
-      const exists = prev.some((f) => f.id === tool.id);
+  const toggleFavorite = useCallback(
+    (tool: ToolEntry) => {
+      const exists = favorites.some((f) => f.id === tool.id);
       const next = exists
-        ? prev.filter((f) => f.id !== tool.id)
-        : [...prev, { id: tool.id, name: tool.name, category: tool.category, addedAt: Date.now() }];
-      persist(next);
-      return next;
-    });
-  }, []);
+        ? favorites.filter((f) => f.id !== tool.id)
+        : [
+            ...favorites,
+            { id: tool.id, name: tool.name, category: tool.category, addedAt: Date.now() },
+          ];
+      void setAppMeta(DB_KEY, next);
+    },
+    [favorites],
+  );
 
-  const clearFavorites = useCallback(() => {
-    setFavorites([]);
-    persist([]);
-  }, []);
+  const clearFavorites = useCallback(() => void setAppMeta(DB_KEY, []), []);
 
   const value = useMemo(
     () => ({ favorites, toggleFavorite, isFavorite, clearFavorites }),
