@@ -1,5 +1,6 @@
 import { Badge, Separator } from '@devtools/ui';
 import type { ToolDefinition } from '@devtools/core';
+import { CAPABILITIES_DISPLAYS } from '../../../constants/capabilities.ts';
 
 interface ToolSidebarProps {
   tool: ToolDefinition;
@@ -12,7 +13,9 @@ export function ToolSidebar({ tool }: ToolSidebarProps) {
         <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Category
         </h3>
-        <Badge variant="secondary">{tool.meta.category}</Badge>
+        <Badge variant="secondary" className="px-2">
+          {tool.meta.category}
+        </Badge>
       </div>
 
       <Separator />
@@ -32,7 +35,7 @@ export function ToolSidebar({ tool }: ToolSidebarProps) {
         </h3>
         <div className="flex flex-wrap gap-2">
           {tool.meta.tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="rounded-full text-xs">
+            <Badge key={tag} variant="secondary" className="rounded-full text-xs px-2">
               {tag}
             </Badge>
           ))}
@@ -46,36 +49,18 @@ export function ToolSidebar({ tool }: ToolSidebarProps) {
           Capabilities
         </h3>
         <ul className="space-y-1 text-xs text-muted-foreground">
-          <li className="flex items-center gap-1.5">
-            <span
-              className={
-                tool.capabilities.needsStorage ? 'text-green-500' : 'text-muted-foreground/40'
-              }
-            >
-              ●
-            </span>
-            Storage
-          </li>
-          <li className="flex items-center gap-1.5">
-            <span
-              className={
-                tool.capabilities.needsWorker ? 'text-green-500' : 'text-muted-foreground/40'
-              }
-            >
-              ●
-            </span>
-            Worker
-          </li>
-          <li className="flex items-center gap-1.5">
-            <span
-              className={
-                tool.capabilities.needsFileSystem ? 'text-green-500' : 'text-muted-foreground/40'
-              }
-            >
-              ●
-            </span>
-            File System
-          </li>
+          {CAPABILITIES_DISPLAYS.map((cap) => (
+            <li key={cap.key} className="flex items-center gap-1.5">
+              <span
+                className={
+                  tool.capabilities[cap.key] ? 'text-green-500' : 'text-muted-foreground/40'
+                }
+              >
+                ●
+              </span>
+              {cap.label}
+            </li>
+          ))}
         </ul>
       </div>
     </aside>
