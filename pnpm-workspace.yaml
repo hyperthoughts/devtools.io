@@ -15,10 +15,23 @@ catalog:
   '@tailwindcss/vite': ^4.2.1
   '@tanstack/react-virtual': ^3.13.23
   '@types/node': ^24
+  '@types/prettier': ^3.0.0
+  '@types/turndown': ^5.0.6
+  '@zxcvbn-ts/core': ^3.0.4
+  '@zxcvbn-ts/language-common': ^3.0.4
+  '@zxcvbn-ts/language-en': ^3.0.2
   dexie-react-hooks: ^4.2.0
   framer-motion: ^12.37.0
   fuse.js: ^7.1.0
+  jwt-decode: ^4.0.0
+  lucide-react: ^0.577.0
+  marked: ^17.0.4
+  rehype-highlight: ^7.0.2
+  remark-gfm: ^4.0.1
+  turndown: ^7.2.2
   typescript: ^5
+  ulidx: ^2.4.1
+  uuidv7: ^1.1.0
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-bundle-visualizer: ^1.2.1
   vite-plus: latest

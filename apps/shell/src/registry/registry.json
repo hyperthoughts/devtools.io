@@ -11,6 +11,86 @@
       "source": "builtin"
     },
     {
+      "id": "color-converter",
+      "name": "Color Converter",
+      "description": "Visualize colors and convert between HEX, RGB, HSL, and more",
+      "icon": "palette",
+      "category": "converters",
+      "tags": ["color", "hex", "rgb", "hsl", "picker", "palette"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "color-palette-generator",
+      "name": "Color Palette Generator",
+      "description": "Generate harmonious color palettes based on a base color",
+      "icon": "swatch-book",
+      "category": "generators",
+      "tags": ["color", "palette", "harmonies", "scheme", "design", "ui"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "cron-expression",
+      "name": "Cron Expression Generator",
+      "description": "Generate and parse cron expressions",
+      "icon": "clock",
+      "category": "generators",
+      "tags": ["cron", "schedule", "time", "generator", "parser"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "css-formatter",
+      "name": "CSS Formatter",
+      "description": "Prettify and format CSS code",
+      "icon": "paintbrush-2",
+      "category": "formatters",
+      "tags": ["css", "format", "beautify", "pretty", "code"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "css-gradient-generator",
+      "name": "CSS Gradient Generator",
+      "description": "Design and generate CSS gradients visually",
+      "icon": "palette",
+      "category": "generators",
+      "tags": ["css", "gradient", "color", "design", "background", "linear", "radial"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "css-shadow-generator",
+      "name": "CSS Shadow Generator",
+      "description": "Design and generate smooth CSS shadows visually",
+      "icon": "layers",
+      "category": "generators",
+      "tags": ["css", "shadow", "box-shadow", "drop-shadow", "design", "layer"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "css-unit-converter",
+      "name": "CSS Unit Converter",
+      "description": "Convert between px, rem, em, vh, vw and more",
+      "icon": "ruler",
+      "category": "converters",
+      "tags": ["css", "units", "px", "rem", "em", "vw", "vh"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "gzip-codec",
+      "name": "Gzip Codec",
+      "description": "Compress and decompress data using Gzip",
+      "icon": "file-archive",
+      "category": "encoders",
+      "tags": ["gzip", "compression", "zip", "inflate", "deflate", "codec"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
       "id": "hash-generator",
       "name": "Hash Generator",
       "description": "Generate SHA-256, SHA-1, and MD5 hashes from text or files",
@@ -21,12 +101,312 @@
       "source": "builtin"
     },
     {
+      "id": "html-entity-codec",
+      "name": "HTML Entity Codec",
+      "description": "Encode and decode HTML entities",
+      "icon": "code-xml",
+      "category": "encoders",
+      "tags": ["html", "entity", "encode", "decode", "escape", "unescape"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "html-formatter",
+      "name": "HTML Formatter",
+      "description": "Prettify and format HTML code",
+      "icon": "file-code-2",
+      "category": "formatters",
+      "tags": ["html", "format", "beautify", "pretty", "code"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "html-markdown-converter",
+      "name": "HTML <> Markdown Converter",
+      "description": "Convert HTML to Markdown and vice versa",
+      "icon": "file-code-2",
+      "category": "converters",
+      "tags": ["html", "markdown", "md", "convert", "format", "dom"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "image-compressor",
+      "name": "Image Compressor",
+      "description": "Compress images directly in the browser",
+      "icon": "image-down",
+      "category": "media",
+      "tags": ["image", "compress", "optimize", "media", "picture", "resize"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "image-format-converter",
+      "name": "Image Format Converter",
+      "description": "Convert images between PNG, JPEG, WEBP and BMP",
+      "icon": "image",
+      "category": "converters",
+      "tags": ["image", "convert", "png", "jpg", "jpeg", "webp", "bmp"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "javascript-formatter",
+      "name": "JavaScript Formatter",
+      "description": "Format JavaScript and TypeScript",
+      "icon": "code-2",
+      "category": "formatters",
+      "tags": ["javascript", "js", "typescript", "ts", "format", "prettier"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "json-csv-converter",
+      "name": "JSON <> CSV",
+      "description": "Convert between JSON and CSV formats",
+      "icon": "file-spreadsheet",
+      "category": "converters",
+      "tags": ["json", "csv", "convert", "format", "spreadsheet", "excel"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
       "id": "json-formatter",
       "name": "JSON Formatter",
       "description": "Format, validate, and minify JSON with syntax highlighting",
       "icon": "braces",
       "category": "formatters",
       "tags": ["json", "format", "validate", "minify", "pretty-print"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "json-schema-validator",
+      "name": "JSON Schema Validator",
+      "description": "Validate JSON against a JSON Schema",
+      "icon": "check-square",
+      "category": "validators",
+      "tags": ["json", "schema", "validator", "ajv", "check"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "json-to-typescript",
+      "name": "JSON to TS",
+      "description": "Convert JSON to TypeScript interfaces",
+      "icon": "brackets",
+      "category": "converters",
+      "tags": ["json", "typescript", "ts", "interface", "type", "convert"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "json-xml-converter",
+      "name": "JSON <> XML Converter",
+      "description": "Convert between JSON and XML formats",
+      "icon": "braces",
+      "category": "converters",
+      "tags": ["json", "xml", "convert", "format", "parse"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "json-yaml-converter",
+      "name": "JSON <> YAML",
+      "description": "Convert between JSON and YAML",
+      "icon": "file-json-2",
+      "category": "converters",
+      "tags": ["json", "yaml", "yml", "convert", "format"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "jwt-decoder",
+      "name": "JWT Decoder",
+      "description": "Decode and analyze JSON Web Tokens securely in your browser",
+      "icon": "key",
+      "category": "encoders",
+      "tags": ["jwt", "decode", "token", "header", "payload"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "lorem-ipsum-generator",
+      "name": "Lorem Ipsum Generator",
+      "description": "Generate placeholder text with paragraphs, sentences, or words",
+      "icon": "align-left",
+      "category": "generators",
+      "tags": ["lorem", "ipsum", "placeholder", "dummy", "text", "generator"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "markdown-preview",
+      "name": "Markdown Preview",
+      "description": "Live markdown editor with GitHub Flavored Markdown and syntax highlighting",
+      "icon": "file-text",
+      "category": "formatters",
+      "tags": ["markdown", "preview", "gfm", "editor"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "mock-data-generator",
+      "name": "Mock Data Generator",
+      "description": "Generate mock data using Faker",
+      "icon": "database",
+      "category": "generators",
+      "tags": ["mock", "data", "fake", "generator", "json", "faker"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "number-base-converter",
+      "name": "Number Base Converter",
+      "description": "Convert numbers between different bases",
+      "icon": "binary",
+      "category": "converters",
+      "tags": ["number", "base", "hex", "binary", "octal", "decimal", "convert"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "password-generator",
+      "name": "Password Generator",
+      "description": "Generate secure passwords and measure entropy",
+      "icon": "key",
+      "category": "generators",
+      "tags": ["password", "secure", "zxcvbn", "entropy", "hash"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "qr-code-tool",
+      "name": "QR Code Tool",
+      "description": "Generate and decode QR codes",
+      "icon": "qr-code",
+      "category": "encoders",
+      "tags": ["qr", "barcode", "generate", "scan", "decode"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "regex-tester",
+      "name": "Regex Tester",
+      "description": "Test and visualize regular expressions against text",
+      "icon": "brackets",
+      "category": "validators",
+      "tags": ["regex", "regexp", "regular", "expression", "match", "test"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "slug-generator",
+      "name": "URL Slug Generator",
+      "description": "Convert strings into URL-friendly slugs",
+      "icon": "link-2",
+      "category": "generators",
+      "tags": ["slug", "url", "seo", "string", "format"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "sql-formatter",
+      "name": "SQL Formatter",
+      "description": "Format and minify SQL queries across various dialects",
+      "icon": "database",
+      "category": "formatters",
+      "tags": ["sql", "format", "minify", "beautify"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "string-escape",
+      "name": "String Escape",
+      "description": "Escape and unescape strings",
+      "icon": "quote",
+      "category": "text",
+      "tags": ["string", "escape", "unescape", "json", "quotes"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "text-case-converter",
+      "name": "Text Case Converter",
+      "description": "Convert text between different string cases",
+      "icon": "type",
+      "category": "text",
+      "tags": ["text", "case", "camel", "snake", "convert", "string"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "text-diff",
+      "name": "Text Diff",
+      "description": "Compare two text documents to see their differences",
+      "icon": "split-square-horizontal",
+      "category": "text",
+      "tags": ["text", "diff", "compare", "difference"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "timestamp-converter",
+      "name": "Unix Timestamp Converter",
+      "description": "Convert timestamps to formatted dates and vice-versa",
+      "icon": "clock",
+      "category": "converters",
+      "tags": ["time", "date", "iso", "epoch", "timestamp"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "url-codec",
+      "name": "URL Codec & Parser",
+      "description": "Encode/decode URLs and parse URL components into an editable table",
+      "icon": "link",
+      "category": "encoders",
+      "tags": ["url", "encode", "decode", "parser", "uri"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "uuid-generator",
+      "name": "UUID & ULID Generator",
+      "description": "Generate standard UUIDs, UUIDv7, and ULIDs",
+      "icon": "fingerprint",
+      "category": "generators",
+      "tags": ["uuid", "guid", "ulid", "generate", "v4", "v7"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "word-counter",
+      "name": "Word Counter",
+      "description": "Count words, characters, lines, and more",
+      "icon": "hash",
+      "category": "text",
+      "tags": ["word", "character", "count", "text", "metrics", "length"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "xml-formatter",
+      "name": "XML Formatter",
+      "description": "Prettify and minify XML strings",
+      "icon": "code",
+      "category": "formatters",
+      "tags": ["xml", "format", "minify", "beautify", "pretty", "code"],
+      "version": "0.1.0",
+      "source": "builtin"
+    },
+    {
+      "id": "yaml-formatter",
+      "name": "YAML Formatter",
+      "description": "Format and beautify YAML",
+      "icon": "align-left",
+      "category": "formatters",
+      "tags": ["yaml", "yml", "format", "beautify", "indent"],
       "version": "0.1.0",
       "source": "builtin"
     }

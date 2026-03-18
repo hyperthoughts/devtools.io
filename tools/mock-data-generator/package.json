@@ -1,0 +1,41 @@
+{
+  "name": "@devtools/mock-data-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "@faker-js/faker": "^8.4.1",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Mock Data Generator",
+    "description": "Generate mock data using Faker",
+    "icon": "database",
+    "category": "generators",
+    "tags": [
+      "mock",
+      "data",
+      "fake",
+      "generator",
+      "json",
+      "faker"
+    ]
+  }
+}

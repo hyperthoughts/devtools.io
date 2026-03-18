@@ -1,0 +1,41 @@
+{
+  "name": "@devtools/image-format-converter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Image Format Converter",
+    "description": "Convert images between PNG, JPEG, WEBP and BMP",
+    "icon": "image",
+    "category": "converters",
+    "tags": [
+      "image",
+      "convert",
+      "png",
+      "jpg",
+      "jpeg",
+      "webp",
+      "bmp"
+    ]
+  }
+}

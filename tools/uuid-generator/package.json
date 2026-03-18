@@ -1,0 +1,42 @@
+{
+  "name": "@devtools/uuid-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "lucide-react": "catalog:",
+    "ulidx": "catalog:",
+    "uuidv7": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "UUID & ULID Generator",
+    "description": "Generate standard UUIDs, UUIDv7, and ULIDs",
+    "icon": "fingerprint",
+    "category": "generators",
+    "tags": [
+      "uuid",
+      "guid",
+      "ulid",
+      "generate",
+      "v4",
+      "v7"
+    ]
+  }
+}

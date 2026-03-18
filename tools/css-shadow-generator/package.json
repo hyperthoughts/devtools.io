@@ -1,0 +1,40 @@
+{
+  "name": "@devtools/css-shadow-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "CSS Shadow Generator",
+    "description": "Design and generate smooth CSS shadows visually",
+    "icon": "layers",
+    "category": "generators",
+    "tags": [
+      "css",
+      "shadow",
+      "box-shadow",
+      "drop-shadow",
+      "design",
+      "layer"
+    ]
+  }
+}

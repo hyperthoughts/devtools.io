@@ -1,0 +1,40 @@
+{
+  "name": "@devtools/lorem-ipsum-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "lucide-react": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Lorem Ipsum Generator",
+    "description": "Generate placeholder text with paragraphs, sentences, or words",
+    "icon": "align-left",
+    "category": "generators",
+    "tags": [
+      "lorem",
+      "ipsum",
+      "placeholder",
+      "dummy",
+      "text",
+      "generator"
+    ]
+  }
+}

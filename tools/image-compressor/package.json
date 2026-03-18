@@ -1,0 +1,41 @@
+{
+  "name": "@devtools/image-compressor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "browser-image-compression": "^2.0.2",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Image Compressor",
+    "description": "Compress images directly in the browser",
+    "icon": "image-down",
+    "category": "media",
+    "tags": [
+      "image",
+      "compress",
+      "optimize",
+      "media",
+      "picture",
+      "resize"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@devtools/html-entity-codec",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "he": "^1.2.0",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/he": "^1.2.3",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "HTML Entity Codec",
+    "description": "Encode and decode HTML entities",
+    "icon": "code-xml",
+    "category": "encoders",
+    "tags": [
+      "html",
+      "entity",
+      "encode",
+      "decode",
+      "escape",
+      "unescape"
+    ]
+  }
+}

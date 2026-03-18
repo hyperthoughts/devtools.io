@@ -1,12 +1,14 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ElementRef } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type ElementRef, type ReactNode } from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { cn } from '../utils/cn.ts';
 
-const Tabs = TabsPrimitive.Root;
+const Tabs = TabsPrimitive.Root as React.FC<
+  ComponentPropsWithoutRef<typeof TabsPrimitive.Root> & { children?: ReactNode }
+>;
 
 const TabsList = forwardRef<
   ElementRef<typeof TabsPrimitive.List>,
-  ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+  ComponentPropsWithoutRef<typeof TabsPrimitive.List> & { children?: ReactNode }
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
@@ -21,7 +23,7 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 
 const TabsTrigger = forwardRef<
   ElementRef<typeof TabsPrimitive.Trigger>,
-  ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+  ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & { children?: ReactNode }
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
@@ -36,7 +38,7 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
 const TabsContent = forwardRef<
   ElementRef<typeof TabsPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+  ComponentPropsWithoutRef<typeof TabsPrimitive.Content> & { children?: ReactNode }
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}

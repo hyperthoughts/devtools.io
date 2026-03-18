@@ -1,0 +1,40 @@
+{
+  "name": "@devtools/json-schema-validator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "ajv": "^8.12.0",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "JSON Schema Validator",
+    "description": "Validate JSON against a JSON Schema",
+    "icon": "check-square",
+    "category": "validators",
+    "tags": [
+      "json",
+      "schema",
+      "validator",
+      "ajv",
+      "check"
+    ]
+  }
+}

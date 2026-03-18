@@ -1,0 +1,43 @@
+{
+  "name": "@devtools/html-markdown-converter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "@types/turndown": "catalog:",
+    "lucide-react": "^0.475.0",
+    "marked": "catalog:",
+    "turndown": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "HTML <> Markdown Converter",
+    "description": "Convert HTML to Markdown and vice versa",
+    "icon": "file-code-2",
+    "category": "converters",
+    "tags": [
+      "html",
+      "markdown",
+      "md",
+      "convert",
+      "format",
+      "dom"
+    ]
+  }
+}

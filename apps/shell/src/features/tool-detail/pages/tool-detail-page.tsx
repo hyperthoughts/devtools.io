@@ -11,6 +11,7 @@ import { PageTransition } from '../../../components/page-transition.tsx';
 import { ToolOverview } from '../components/tool-overview.tsx';
 import { ToolSidebar } from '../components/tool-sidebar.tsx';
 import { ToolContent } from '../components/tool-content.tsx';
+import { cn } from '@devtools/ui';
 
 function ToolSkeleton() {
   return (
@@ -41,6 +42,7 @@ export function ToolDetailPage() {
   const { createPool } = useWorkerContext();
   const { filesystem } = useFilesystemContext();
   const { resolvedTheme } = useTheme();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   useEffect(() => {
     if (!toolId) return;
@@ -93,12 +95,21 @@ export function ToolDetailPage() {
   return (
     <PageTransition>
       <div className="mx-auto max-w-7xl px-4 py-8">
-        <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
-          <div>
-            <ToolOverview tool={tool} />
+        <div
+          className={cn(
+            'grid gap-6 items-start',
+            isSidebarOpen ? 'lg:grid-cols-[1fr_280px]' : 'grid-cols-1',
+          )}
+        >
+          <div className="min-w-0">
+            <ToolOverview
+              tool={tool}
+              isSidebarOpen={isSidebarOpen}
+              onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+            />
             <ToolContent tool={tool} ctx={ctx} />
           </div>
-          <ToolSidebar tool={tool} />
+          {isSidebarOpen && <ToolSidebar tool={tool} />}
         </div>
       </div>
     </PageTransition>

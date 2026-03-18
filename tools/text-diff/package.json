@@ -1,0 +1,40 @@
+{
+  "name": "@devtools/text-diff",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "diff": "^5.2.0",
+    "lucide-react": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/diff": "^5.2.1",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Text Diff",
+    "description": "Compare two text documents to see their differences",
+    "icon": "split-square-horizontal",
+    "category": "text",
+    "tags": [
+      "text",
+      "diff",
+      "compare",
+      "difference"
+    ]
+  }
+}

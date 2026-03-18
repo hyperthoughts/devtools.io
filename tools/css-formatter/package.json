@@ -1,0 +1,41 @@
+{
+  "name": "@devtools/css-formatter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "lucide-react": "^0.475.0",
+    "prettier": "^3.3.3"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/prettier": "^3.0.0",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "CSS Formatter",
+    "description": "Prettify and format CSS code",
+    "icon": "paintbrush-2",
+    "category": "formatters",
+    "tags": [
+      "css",
+      "format",
+      "beautify",
+      "pretty",
+      "code"
+    ]
+  }
+}

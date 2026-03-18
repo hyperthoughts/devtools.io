@@ -1,0 +1,42 @@
+{
+  "name": "@devtools/password-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "@zxcvbn-ts/core": "catalog:",
+    "@zxcvbn-ts/language-common": "catalog:",
+    "@zxcvbn-ts/language-en": "catalog:",
+    "lucide-react": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Password Generator",
+    "description": "Generate secure passwords and measure entropy",
+    "icon": "key",
+    "category": "generators",
+    "tags": [
+      "password",
+      "secure",
+      "zxcvbn",
+      "entropy",
+      "hash"
+    ]
+  }
+}

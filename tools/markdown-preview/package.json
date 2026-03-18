@@ -1,0 +1,40 @@
+{
+  "name": "@devtools/markdown-preview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "react-markdown": "^9",
+    "rehype-highlight": "catalog:",
+    "remark-gfm": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Markdown Preview",
+    "description": "Live markdown editor with GitHub Flavored Markdown and syntax highlighting",
+    "icon": "file-text",
+    "category": "formatters",
+    "tags": [
+      "markdown",
+      "preview",
+      "gfm",
+      "editor"
+    ]
+  }
+}

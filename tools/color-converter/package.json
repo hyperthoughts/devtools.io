@@ -1,0 +1,42 @@
+{
+  "name": "@devtools/color-converter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "colord": "^2.9.3",
+    "lucide-react": "catalog:",
+    "react-colorful": "^5.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "Color Converter",
+    "description": "Visualize colors and convert between HEX, RGB, HSL, and more",
+    "icon": "palette",
+    "category": "converters",
+    "tags": [
+      "color",
+      "hex",
+      "rgb",
+      "hsl",
+      "picker",
+      "palette"
+    ]
+  }
+}

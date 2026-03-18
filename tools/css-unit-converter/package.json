@@ -1,0 +1,41 @@
+{
+  "name": "@devtools/css-unit-converter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@devtools/core": "workspace:*",
+    "@devtools/ui": "workspace:*",
+    "lucide-react": "^0.475.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16",
+    "@types/react": "^19",
+    "happy-dom": "^15",
+    "react": "^19",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devtools": {
+    "name": "CSS Unit Converter",
+    "description": "Convert between px, rem, em, vh, vw and more",
+    "icon": "ruler",
+    "category": "converters",
+    "tags": [
+      "css",
+      "units",
+      "px",
+      "rem",
+      "em",
+      "vw",
+      "vh"
+    ]
+  }
+}
