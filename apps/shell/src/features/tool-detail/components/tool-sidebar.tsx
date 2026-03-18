@@ -7,12 +7,12 @@ interface ToolSidebarProps {
 
 export function ToolSidebar({ tool }: ToolSidebarProps) {
   return (
-    <aside className="space-y-5 rounded-lg border p-5">
+    <aside className="space-y-5 self-start rounded-lg border p-5 lg:sticky lg:top-24">
       <div>
         <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Category
         </h3>
-        <Badge variant="outline">{tool.meta.category}</Badge>
+        <Badge variant="secondary">{tool.meta.category}</Badge>
       </div>
 
       <Separator />
@@ -30,9 +30,9 @@ export function ToolSidebar({ tool }: ToolSidebarProps) {
         <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Tags
         </h3>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2">
           {tool.meta.tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="text-xs">
+            <Badge key={tag} variant="secondary" className="rounded-full text-xs">
               {tag}
             </Badge>
           ))}

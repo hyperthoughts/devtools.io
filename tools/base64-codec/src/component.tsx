@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import type { ToolContext } from '@devtools/core';
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
   Button,
   CodeEditor,
   CopyButton,
@@ -12,6 +8,9 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
+  ToolPanel,
+  ToolInputOutput,
+  ToolField,
 } from '@devtools/ui';
 import { encodeBase64, decodeBase64, type Base64Mode } from './utils.ts';
 
@@ -41,11 +40,8 @@ export function Component({ ctx }: { ctx: ToolContext }) {
 
   return (
     <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Base64 Codec</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <ToolPanel title="Base64 Codec">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <label className="text-sm text-muted-foreground">Mode:</label>
             <Button
@@ -75,26 +71,25 @@ export function Component({ ctx }: { ctx: ToolContext }) {
               <Button onClick={handleDecode}>Decode from Base64</Button>
             </TabsContent>
           </Tabs>
-        </CardContent>
-      </Card>
+        </div>
+      </ToolPanel>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Input</label>
-          <CodeEditor
-            value={input}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => saveInput(e.target.value)}
-            placeholder="Enter text or Base64 string..."
-          />
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Output</label>
-            {output && <CopyButton value={output} />}
-          </div>
-          <CodeEditor value={output} readOnly />
-        </div>
-      </div>
+      <ToolInputOutput
+        input={
+          <ToolField label="Input">
+            <CodeEditor
+              value={input}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => saveInput(e.target.value)}
+              placeholder="Enter text or Base64 string..."
+            />
+          </ToolField>
+        }
+        output={
+          <ToolField label="Output" actions={output ? <CopyButton value={output} /> : undefined}>
+            <CodeEditor value={output} readOnly />
+          </ToolField>
+        }
+      />
 
       {error && <p className="text-sm text-destructive">{error}</p>}
     </div>

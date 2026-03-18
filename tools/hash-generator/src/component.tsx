@@ -1,15 +1,6 @@
 import { useState } from 'react';
 import type { ToolContext } from '@devtools/core';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  Button,
-  CodeEditor,
-  CopyButton,
-  FileDropZone,
-} from '@devtools/ui';
+import { Button, CodeEditor, CopyButton, FileDropZone, ToolPanel, ToolField } from '@devtools/ui';
 import { hashString, hashFile, type HashAlgorithm, type HashResult } from './utils.ts';
 
 const ALGORITHMS: HashAlgorithm[] = ['SHA-256', 'SHA-1', 'MD5'];
@@ -44,22 +35,18 @@ export function Component({ ctx }: { ctx: ToolContext }) {
 
   return (
     <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Hash Generator</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium">Text Input</label>
+      <ToolPanel title="Hash Generator">
+        <div className="space-y-4">
+          <ToolField label="Text Input">
             <CodeEditor
               value={input}
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value)}
               placeholder="Enter text to hash..."
             />
-            <Button onClick={handleHashText} disabled={computing}>
-              {computing ? 'Computing...' : 'Hash Text'}
-            </Button>
-          </div>
+          </ToolField>
+          <Button onClick={handleHashText} disabled={computing}>
+            {computing ? 'Computing...' : 'Hash Text'}
+          </Button>
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
@@ -75,15 +62,12 @@ export function Component({ ctx }: { ctx: ToolContext }) {
               {fileName ? `Hashed: ${fileName}` : 'Drop a file here to hash it'}
             </p>
           </FileDropZone>
-        </CardContent>
-      </Card>
+        </div>
+      </ToolPanel>
 
       {results.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Results</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
+        <ToolPanel title="Results">
+          <div className="space-y-3">
             {results.map((result) => (
               <div key={result.algorithm} className="space-y-1">
                 <div className="flex items-center justify-between">
@@ -100,8 +84,8 @@ export function Component({ ctx }: { ctx: ToolContext }) {
                 </code>
               </div>
             ))}
-          </CardContent>
-        </Card>
+          </div>
+        </ToolPanel>
       )}
     </div>
   );

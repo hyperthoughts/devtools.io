@@ -7,7 +7,7 @@ interface ToolContentProps {
 
 export function ToolContent({ tool, ctx }: ToolContentProps) {
   return (
-    <div className="rounded-lg border bg-card p-1">
+    <div>
       <tool.Component ctx={ctx} />
     </div>
   );

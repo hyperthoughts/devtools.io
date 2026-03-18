@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import type { ToolContext } from '@devtools/core';
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
   Button,
   CodeEditor,
   CopyButton,
@@ -12,6 +8,9 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
+  ToolPanel,
+  ToolInputOutput,
+  ToolField,
 } from '@devtools/ui';
 import { formatJson, minifyJson, validateJson } from './utils.ts';
 
@@ -45,61 +44,55 @@ export function Component({ ctx }: { ctx: ToolContext }) {
 
   return (
     <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>JSON Formatter</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Tabs defaultValue="format">
-            <TabsList>
-              <TabsTrigger value="format">Format</TabsTrigger>
-              <TabsTrigger value="minify">Minify</TabsTrigger>
-              <TabsTrigger value="validate">Validate</TabsTrigger>
-            </TabsList>
-            <TabsContent value="format" className="space-y-3">
-              <div className="flex items-center gap-2">
-                <label className="text-sm text-muted-foreground">Indent:</label>
-                {[2, 4].map((n) => (
-                  <Button
-                    key={n}
-                    variant={indent === n ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setIndent(n)}
-                  >
-                    {n} spaces
-                  </Button>
-                ))}
-              </div>
-              <Button onClick={handleFormat}>Format JSON</Button>
-            </TabsContent>
-            <TabsContent value="minify">
-              <Button onClick={handleMinify}>Minify JSON</Button>
-            </TabsContent>
-            <TabsContent value="validate">
-              <Button onClick={handleValidate}>Validate JSON</Button>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-      </Card>
+      <ToolPanel title="JSON Formatter">
+        <Tabs defaultValue="format">
+          <TabsList>
+            <TabsTrigger value="format">Format</TabsTrigger>
+            <TabsTrigger value="minify">Minify</TabsTrigger>
+            <TabsTrigger value="validate">Validate</TabsTrigger>
+          </TabsList>
+          <TabsContent value="format" className="space-y-3">
+            <div className="flex items-center gap-2">
+              <label className="text-sm text-muted-foreground">Indent:</label>
+              {[2, 4].map((n) => (
+                <Button
+                  key={n}
+                  variant={indent === n ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setIndent(n)}
+                >
+                  {n} spaces
+                </Button>
+              ))}
+            </div>
+            <Button onClick={handleFormat}>Format JSON</Button>
+          </TabsContent>
+          <TabsContent value="minify">
+            <Button onClick={handleMinify}>Minify JSON</Button>
+          </TabsContent>
+          <TabsContent value="validate">
+            <Button onClick={handleValidate}>Validate JSON</Button>
+          </TabsContent>
+        </Tabs>
+      </ToolPanel>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Input</label>
-          <CodeEditor
-            value={input}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value)}
-            placeholder="Paste your JSON here..."
-            language="json"
-          />
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Output</label>
-            {output && <CopyButton value={output} />}
-          </div>
-          <CodeEditor value={output} readOnly language="json" />
-        </div>
-      </div>
+      <ToolInputOutput
+        input={
+          <ToolField label="Input">
+            <CodeEditor
+              value={input}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value)}
+              placeholder="Paste your JSON here..."
+              language="json"
+            />
+          </ToolField>
+        }
+        output={
+          <ToolField label="Output" actions={output ? <CopyButton value={output} /> : undefined}>
+            <CodeEditor value={output} readOnly language="json" />
+          </ToolField>
+        }
+      />
 
       {error && <p className="text-sm text-destructive">{error}</p>}
     </div>

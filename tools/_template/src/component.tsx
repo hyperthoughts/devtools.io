@@ -1,22 +1,42 @@
+import { useState } from 'react';
 import type { ToolContext } from '@devtools/core';
-import { Card, CardHeader, CardTitle, CardContent } from '@devtools/ui';
+import { ToolPanel, ToolInputOutput, ToolField, CodeEditor, CopyButton } from '@devtools/ui';
 
 export function Component({ ctx }: { ctx: ToolContext }) {
-  // Reactive read from IndexedDB -- auto re-renders when value changes
-  // const savedValue = ctx.useLive<string>('myKey');
+  const savedInput = ctx.useLive<string>('lastInput');
+  const [input, setInput] = useState('');
+  const [output, _setOutput] = useState('');
 
-  // Imperative write -- triggers re-render for all useLive subscribers
-  // void ctx.storage.set('myKey', 'newValue');
+  if (savedInput !== undefined && input === '') {
+    setInput(savedInput);
+  }
 
-  void ctx;
+  const saveInput = (value: string) => {
+    setInput(value);
+    void ctx.storage.set('lastInput', value);
+  };
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Tool Name</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground">Start building your tool here.</p>
-      </CardContent>
-    </Card>
+    <div className="space-y-4">
+      <ToolPanel title="Tool Name">
+        <p className="text-sm text-muted-foreground">Configure your tool here.</p>
+      </ToolPanel>
+      <ToolInputOutput
+        input={
+          <ToolField label="Input">
+            <CodeEditor
+              value={input}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => saveInput(e.target.value)}
+              placeholder="Enter input..."
+            />
+          </ToolField>
+        }
+        output={
+          <ToolField label="Output" actions={output ? <CopyButton value={output} /> : undefined}>
+            <CodeEditor value={output} readOnly />
+          </ToolField>
+        }
+      />
+    </div>
   );
 }

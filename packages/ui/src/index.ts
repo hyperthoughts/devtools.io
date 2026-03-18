@@ -35,3 +35,11 @@ export {
 export { Badge, badgeVariants, type BadgeProps } from './components/badge.tsx';
 export { Separator } from './components/separator.tsx';
 export { ScrollArea, ScrollBar } from './components/scroll-area.tsx';
+export {
+  ToolPanel,
+  ToolInputOutput,
+  ToolField,
+  type ToolPanelProps,
+  type ToolInputOutputProps,
+  type ToolFieldProps,
+} from './components/tool-layout.tsx';
